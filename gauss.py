@@ -6,6 +6,12 @@ def elim_gauss(A, b):
     n = np.shape(Ab)[0]
     for i in range(0, n - 1):
         for j in range(i + 1, n):
+            # Pivotamento
+            if Ab[i, i] == 0:
+                for k in range(i + 1, n):
+                    if Ab[k, i] != 0:
+                        Ab[[i, k]] = Ab[[k, i]] # troca linhas
+                        break
             pivot = Ab[i, i]
             m = Ab[j, i] / pivot
             for k in range(0, n + 1):
@@ -21,23 +27,21 @@ def elim_gauss(A, b):
 
     return Ab, X
 
+# Exemplo que precisa de pivotamento
+A = np.array([[0, 2, 2],
+              [1, 2, 1],
+              [1, 1, 1]], dtype='double')
 
-# Matriz do exemplo que está no slide
-A = np.array([[8, -2, 5],
-              [4, 8, 5],
-              [2, -2, 10]], dtype='double')
+b = np.array([8, 9, 6]).reshape(-1, 1)
 
-b = np.array([-1, 15, -12]).reshape(-1, 1)
-
-# Matriz do exercício do slide
 # A = np.array([[10, 1, -1, 2],
 #               [4, 9, -1, 3],
 #               [2, -2, 12, 5],
 #               [1, -3, 5, 15]], dtype='double')
-#
-# b = np.array([-33, -8, 11, -11]).reshape(-1, 1)
+
+# b = np.array([-33, 8, 11, -11]).reshape(-1, 1)
 
 ab, x = elim_gauss(A, b)
 
-print("Matriz A|b Triangularizada: \n", ab)
+print("Matriz A|b Triangularizada: \n", ab.round(2))
 print("\nVetor solução:\n", x)
