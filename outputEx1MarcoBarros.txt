@@ -1,0 +1,152 @@
+Sistema 1:
+	Jacobi:
+		x = [0.9999999  1.99999944 2.99999906]
+		Iterações = 14
+		Erro = 5.687774573835696e-07
+	Seidel:
+		x = [0.9999998  1.99999976 2.99999984]
+		Iterações = 9
+		Erro = 4.1229735067921076e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 2:
+	Jacobi:
+		x = [ 0.55555595 -0.77777766  2.22222199]
+		Iterações = 15
+		Erro = 6.614235745231956e-07
+	Seidel:
+		x = [ 0.55555567 -0.77777783  2.22222216]
+		Iterações = 11
+		Erro = 2.354503146467025e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 3:
+	Jacobi:
+		x = [ 1.99999987  0.99999974 -1.00000013]
+		Iterações = 12
+		Erro = 2.621440172426176e-07
+	Seidel:
+		x = [ 2.0000001   1.00000004 -0.99999999]
+		Iterações = 7
+		Erro = 6.029311684667477e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Jacobi converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 4:
+	Jacobi:
+		x = [1.03846161 0.71538472 1.02307696]
+		Iterações = 12
+		Erro = 3.2927172110473274e-07
+	Seidel:
+		x = [1.03846159 0.71538464 1.02307691]
+		Iterações = 8
+		Erro = 4.576144910826039e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Jacobi converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 5:
+	Jacobi:
+		x = [0.4285717  1.28571367 1.5714283 ]
+		Iterações = 14
+		Erro = 6.068837611256965e-07
+	Seidel:
+		x = [0.42857188 1.28571406 1.57142852]
+		Iterações = 8
+		Erro = 3.948807716369629e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 6:
+	Jacobi:
+		x = [ 0.5 -0.  -0.  -0. ]
+		Iterações = 1
+		Erro = 0.0
+	Seidel:
+		x = [0.7999972  0.59999633 0.39999703 0.19999852]
+		Iterações = 28
+		Erro = 7.835795682864521e-07
+
+	Conclusão sob iterações: Jacobi converge mais rapido nas iteracoes
+	Conclusão sob erro: Jacobi converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 7:
+	Jacobi:
+		x = [5.99999946 2.99999958 4.99999913 1.99999974]
+		Iterações = 14
+		Erro = 5.187994064997331e-07
+	Seidel:
+		x = [6.00000065 2.99999966 5.00000011 1.99999998]
+		Iterações = 7
+		Erro = 9.22692166816932e-07
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Jacobi converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 8:
+	Jacobi:
+		x = [ 0.          0.76855641  0.         -1.00927897]
+		Iterações = 100
+		Erro = 0.6029324761856061
+	Seidel:
+		x = [-0.14272011  1.07128299 -0.01776301 -0.99714523]
+		Iterações = 100
+		Erro = 0.00014403453562156226
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 9:
+	Jacobi:
+		x = [ 0.          0.92909084  0.         -1.03509757]
+		Iterações = 100
+		Erro = 0.16070421403320387
+	Seidel:
+		x = [ 0.01058953  0.99497086  0.00275843 -1.00236437]
+		Iterações = 100
+		Erro = 0.0005621403810967819
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+
+Sistema 10:
+	Jacobi:
+		x = [  15.23302685  -53.56870382  175.73255854 -563.78724888 1824.2665408
+ -626.43992961  217.34410121  -74.11527537   26.1405418    -7.47217188]
+		Iterações = 100
+		Erro = 1.89984414129922
+	Seidel:
+		x = [0.16081867 0.35944658 0.89290391 2.33479761 6.40932423 2.68494211
+ 1.25146449 0.73106247 0.54448535 0.54982253]
+		Iterações = 100
+		Erro = 0.010467845778593998
+
+	Conclusão sob iterações: Seidel converge mais rapido nas iteracoes
+	Conclusão sob erro: Seidel converge mais rapido no erro
+
+--------------------------------------------
+

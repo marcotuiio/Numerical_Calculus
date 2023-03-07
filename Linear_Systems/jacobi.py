@@ -8,7 +8,7 @@ def jacobi(mat, b):
     tol = 0.000001
     print("Erro tolerado: %f\n" % (tol))
     for k in range(0, 15):
-        print("Iteração:", k, "- X:", x)
+        # print("Iteração:", k, "- X:", x)
         for i in range(0, n):
             soma = 0
             for j in range(0, n):
@@ -26,9 +26,10 @@ def jacobi(mat, b):
 #### Definir o erro tolerado na função
 #### Se não for possivel encerrar via erro tolerado, a função deve encerrar após 15 iterações
 print("Método de Jacobi")
-mat = np.asmatrix([[10., 1.],
-                [1., 8.]])
-b = np.array([23., 26.]) 
+mat = np.asmatrix([[10., 5., -2.],
+                   [3., 12., 4.],
+                    [-5., -5., 15.]])
+b = np.array([13., 19., 4.]) 
 
 x = jacobi(mat, b)
 print("\nVetor resultado aproximado X:\n", x)
