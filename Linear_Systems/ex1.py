@@ -16,10 +16,10 @@ def seidel(mat, b):
             prov = x[i]
             x[i] = (b[i] + soma) / mat[i, i]
             erro[i] = abs(x[i] - prov)
+            # if np.linalg.norm([x[i], prov]) < tol:
+            #     return x, iteracoes, np.linalg.norm([x[i], prov])
         if max(erro) / max(x) < tol:
             return x, iteracoes, max(erro) / max(x)
-        if np.linalg.norm(x[i] - prov) < tol:
-            return x, iteracoes, np.linalg.norm(x[i] - prov)
 
     return x, iteracoes, max(erro) / max(x)
 
@@ -39,13 +39,13 @@ def jacobi(mat, b):
                     soma = -mat[i, j] * x[j] + soma
             aux[i] = (b[i] + soma) / mat[i, i]
             erro[i] = abs(aux[i] - x[i])
+            # if np.linalg.norm([aux[i], x[i]]) < tol:
+            #     return x, iteracoes, np.linalg.norm([aux[i], x[i]])
         for t in range(0, n):
             x[t] = aux[t]
         if max(erro) / max(x) < tol:
             return x, iteracoes, max(erro) / max(x)
-        if np.linalg.norm(x[i] - x[i-1]) < tol:
-            return x, iteracoes, np.linalg.norm(x[i] - x[i-1])
-        
+    
     return x, iteracoes, max(erro) / max(x)
 
 def matriz_diagonalmente_dominante(mat):
@@ -60,12 +60,24 @@ def matriz_diagonalmente_dominante(mat):
                 sum = sum + abs(mat[i, j])
             if (j == mat.shape[1]-1):
                 if (current >= sum):
-                    # print(current, sum)
                     aux += 1
-
     if (aux == mat.shape[0]):
+        # print("Matriz diagonalmente dominante")
         return True
+    else:
+        return False
     
+def tornar_matriz_edp(A):
+    n = A.shape[0]
+    D = np.diag(np.abs(A)) # diagonal da matriz
+    S = np.sum(np.abs(A), axis=1) - D # soma dos elementos não diagonais em cada linha
+    if np.all(D > S):
+        return A
+    else:
+        # construir matriz estritamente diagonalmente positiva
+        B = np.diag(S) + A - D
+        return B
+
 sistemas = []
 vetores = []    
 
@@ -154,6 +166,10 @@ output = open("outputEx1MarcoBarros.txt", "a")
 
 for i in range(len(sistemas)):
     s = sistemas[i]
+    
+    if not matriz_diagonalmente_dominante(s):
+        output.write("obs: Sistema " + str(i+1) + " não é diagonalmente dominante.\n")
+
     b = vetores[i]
     xj, itj, ej = jacobi(s, b)
     xs, its, es = seidel(s, b)
@@ -170,16 +186,16 @@ for i in range(len(sistemas)):
     output.write("\t\tErro = " + str(es) + "\n")
     
     output.write("\n\tConclusão sob iterações: ")
-    if itj < its:
-        output.write("Jacobi converge mais rapido nas iteracoes\n")
+    if itj < its and itj > 1:
+        output.write("Jacobi converge mais rápido nas iterações\n")
     else:
-        output.write("Seidel converge mais rapido nas iteracoes\n")
+        output.write("Seidel converge mais rápido nas iterações\n")
 
     output.write("\tConclusão sob erro: ")
     if ej < es:
-        output.write("Jacobi converge mais rapido no erro\n")
+        output.write("Jacobi converge mais rápido no erro\n")
     else:
-        output.write("Seidel converge mais rapido no erro\n")
+        output.write("Seidel converge mais rápido no erro\n")
 
     output.write("\n--------------------------------------------\n\n")
 
