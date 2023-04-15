@@ -65,7 +65,7 @@ def splines(x, y, deriv, var):
 
     return spline_list
 
-def plot_graph(x, y, function, splines_list, identificador):
+def plot_graph(x, function, splines_list, identificador):
     var = sp.Symbol('x')
     f = sp.lambdify(var, function, "numpy")
     x_vals = np.linspace(x[0], x[len(x)-1], 50)
@@ -82,7 +82,7 @@ def plot_graph(x, y, function, splines_list, identificador):
     plt.grid(True) # Adicionar uma grade ao gráfico
     plt.legend() # Adicionar uma legenda ao gráfico
     plt.savefig('splines_teste_'+identificador+'.png') # Salvar o gráfico em um arquivo PNG
-    # plt.show() # Mostrar o gráfico
+    plt.close() # Fechar o gráfico
 
 def seidel(mat, b):
     n = mat.shape[0]
@@ -105,47 +105,54 @@ def seidel(mat, b):
     return x
 
 var_x = sp.Symbol('x')
+list_x = []
+list_y = []
+list_function = []
+list_deriv = []
 
-# print(" --- Teste 1")
-# x = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3])
-# y = np.array([4, 0, -2, 0, 1, 0, -0.5])
-# function = 2**(2 - var_x) * sp.cos(sp.pi * var_x)
-# deriv = sp.diff(function, var_x)
+x1 = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3])
+y1 = np.array([4, 0, -2, 0, 1, 0, -0.5])
+function1 = 2**(2 - var_x) * sp.cos(sp.pi * var_x)
+deriv1 = sp.diff(function1, var_x)
 
-# splines_list = splines(x, y, deriv, var_x)
-# for i in range(0, len(splines_list)):
-#     print("Spline", i, ":", splines_list[i])
-# plot_graph(x, y, function, splines_list, '1')
+list_x.append(x1)
+list_y.append(y1)
+list_function.append(function1)
+list_deriv.append(deriv1)
 
-# print("\n\n --- Teste 2")
-# x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# y = np.array([2, 0, 0.6667, 0, 0.4, 0, 0.2857, 0, 0.2222, 0, 0.1818])
-# function = (1 + sp.cos(sp.pi * var_x)) / 1 + var_x
-# deriv = sp.diff(function, var_x)
+x2 = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+y2 = np.array([2, 0, 0.6667, 0, 0.4, 0, 0.2857, 0, 0.2222, 0, 0.1818])
+function2 = (1 + sp.cos(sp.pi * var_x)) / 1 + var_x
+deriv2 = sp.diff(function2, var_x)
 
-# splines_list = splines(x, y, deriv, var_x)
-# for i in range(0, len(splines_list)):
-#     print("Spline", i, ":", splines_list[i])
-# plot_graph(x, y, function, splines_list, '2')
+list_x.append(x2)
+list_y.append(y2)
+list_function.append(function2)
+list_deriv.append(deriv2)
 
-# print("\n\n --- Teste 3")
-# x = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3])
-# y = np.array([-0.3333, -0.2703, -0.2, -0.1333, -0.0769, -0.0328, 0])
-# function = (var_x - 3) / (var_x**2 + 9)
-# deriv = sp.diff(function, var_x)
+x3 = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3])
+y3 = np.array([-0.3333, -0.2703, -0.2, -0.1333, -0.0769, -0.0328, 0])
+function3 = (var_x - 3) / (var_x**2 + 9)
+deriv3 = sp.diff(function3, var_x)
 
-# splines_list = splines(x, y, deriv, var_x)
-# for i in range(0, len(splines_list)):
-#     print("Spline", i, ":", splines_list[i])
-# plot_graph(x, y, function, splines_list, '3')
+list_x.append(x3)
+list_y.append(y3)
+list_function.append(function3)
+list_deriv.append(deriv3)
 
-print("\n\n --- Teste 4")
-x = np.array([0, 1, 2, 3, 4, 5, 6])
-y = np.array([-0.33, -0.2, -0.08, 0, 0.04, 0.06, 0.07])
-function = (var_x - 3) / (var_x**2 + 9)
-deriv = sp.diff(function, var_x)
+x4 = np.array([0, 1, 2, 3, 4, 5, 6])
+y4 = np.array([-0.33, -0.2, -0.08, 0, 0.04, 0.06, 0.07])
+function4 = (var_x - 3) / (var_x**2 + 9)
+deriv4 = sp.diff(function4, var_x)
 
-splines_list = splines(x, y, deriv, var_x)
-for i in range(0, len(splines_list)):
-    print("Spline", i, ":", splines_list[i])
-plot_graph(x, y, function, splines_list, '4')
+list_x.append(x4)
+list_y.append(y4)
+list_function.append(function4)
+list_deriv.append(deriv4)
+
+for i in range(0, len(list_x)):
+    print("\n\n --- Teste ", i+1)
+    splines_list = splines(list_x[i], list_y[i], list_deriv[i], var_x)
+    for j in range(0, len(splines_list)):
+        print("Spline", j, ":", splines_list[j])
+    plot_graph(list_x[i], list_function[i], splines_list, str(i+1))
