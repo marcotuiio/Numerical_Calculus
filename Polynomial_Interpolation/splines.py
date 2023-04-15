@@ -2,6 +2,12 @@ import numpy as np
 import sympy as sp
 import matplotlib.pyplot as plt
 
+# Para gerar os graficos basta executar o arquivo splines.py
+# Os graficos serão salvos na forma de .png com nome marcobarros_splines_teste_N.png (N = numero do teste)
+# Se precisar mudar o diretorio de salvamento dos graficos, basta alterar a variavel path
+
+path = './'
+
 def splines(x, y, deriv, var):
     n = len(x)
     ini = deriv.subs(var, x[0])
@@ -81,7 +87,7 @@ def plot_graph(x, function, splines_list, identificador):
     plt.ylabel('y') # Definir o rótulo do eixo y
     plt.grid(True) # Adicionar uma grade ao gráfico
     plt.legend() # Adicionar uma legenda ao gráfico
-    plt.savefig('marcobarros_splines_teste_'+identificador+'.png') # Salvar o gráfico em um arquivo PNG
+    plt.savefig(path+'/marcobarros_splines_teste_'+identificador+'.png') # Salvar o gráfico em um arquivo PNG
     plt.close() # Fechar o gráfico
 
 def seidel(mat, b):
