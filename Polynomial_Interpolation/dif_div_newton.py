@@ -26,7 +26,7 @@ def dif_div_newton(x, y):
         list_f_x.append(f_x)
         posic += 1
 
-    print("d = ", d)
+    # print("d = ", d)
 
     # polinomio interpolador
     p_x = 0
@@ -40,6 +40,7 @@ def dif_div_newton(x, y):
     p_x = sp.simplify(p_x)
     return p_x
 
+print("\nInterpolação por Diferenças Divididas de Newton\n")
 # x = np.array([-1, 0, 2])
 # y = np.array([4, 1, -1])
 # Poly = dif_div_newton(x, y)

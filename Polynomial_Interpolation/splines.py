@@ -81,7 +81,7 @@ def plot_graph(x, function, splines_list, identificador):
     plt.ylabel('y') # Definir o rótulo do eixo y
     plt.grid(True) # Adicionar uma grade ao gráfico
     plt.legend() # Adicionar uma legenda ao gráfico
-    plt.savefig('splines_teste_'+identificador+'.png') # Salvar o gráfico em um arquivo PNG
+    plt.savefig('marcobarros_splines_teste_'+identificador+'.png') # Salvar o gráfico em um arquivo PNG
     plt.close() # Fechar o gráfico
 
 def seidel(mat, b):
@@ -150,6 +150,7 @@ list_y.append(y4)
 list_function.append(function4)
 list_deriv.append(deriv4)
 
+print("Interpolação por Splines Cúbicas")
 for i in range(0, len(list_x)):
     print("\n\n --- Teste ", i+1)
     splines_list = splines(list_x[i], list_y[i], list_deriv[i], var_x)
