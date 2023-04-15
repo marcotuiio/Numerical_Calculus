@@ -122,7 +122,7 @@ list_deriv.append(deriv1)
 
 x2 = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 y2 = np.array([2, 0, 0.6667, 0, 0.4, 0, 0.2857, 0, 0.2222, 0, 0.1818])
-function2 = (1 + sp.cos(sp.pi * var_x)) / 1 + var_x
+function2 = (1 + sp.cos(sp.pi * var_x)) / (1 + var_x)
 deriv2 = sp.diff(function2, var_x)
 
 list_x.append(x2)
