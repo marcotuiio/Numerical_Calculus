@@ -9,27 +9,26 @@ def for_poly(x, y, n):
     for i in range(n):
         for j in range(n):
             for k in range(m):
-                if i == 0 and j == 0:
-                    matX[i, j] = m
-                else:
-                    matX[i, j] = x[k]**(i+j) + matX[i, j]
+                matX[i, j] = x[k]**(i+j) + matX[i, j]
 
     vetY = np.zeros(n)
     for i in range(n):
-        for j in range(m):
-            if i == 0:
-                vetY[i] = y[j] + vetY[i]
-            else:
-                vetY[i] = y[j]*x[j]**i + vetY[i]
+        for k in range(m):
+            vetY[i] = y[k]*x[k]**i + vetY[i]
 
-    print("Matriz X: ")
-    print(matX.round(4))
-    print("Vetor Y: ")  
-    print(vetY.round(4))
+    print("matX: \n", matX.round(4))
+    print("vetY: \n", vetY.round(4))
+
     vetA = seidel(matX, vetY)
-    print("Vetor A: ")
-    print(vetA.round(4))
+    print("A.i: \n", vetA.round(1))
 
+    # Criação do polinômio
+    X = sp.Symbol('x')
+    pol = 0
+    for i in range(n):
+        pol = ((vetA[i]).round(4))*X**i + pol
+
+    print("\nPolinômio: \n", pol)
 
 def seidel(mat, b):
     n = mat.shape[0]
@@ -53,8 +52,8 @@ def seidel(mat, b):
 # y = np.array([1, 1.2840, 1.6487, 2.1170, 2.7183])
 # n = 3
 
-x = np.array([-3, -2, -1, 1, 2, 3])
-y = np.array([26, 17, 10, 2, 2, 26])
+x = np.array([-3, -2, -1, 1, 2, -3])
+y = np.array([26, 17, 10, 2, 1, 26])
 n = 3
 
 for_poly(x, y, n)
