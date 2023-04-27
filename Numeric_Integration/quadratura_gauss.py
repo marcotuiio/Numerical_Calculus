@@ -1,6 +1,8 @@
 import numpy as np
 import sympy as sp
 
+### Informe abaixo a função f(x), o intervalo [a, b] e o número de pontos n
+
 def quadr_gauss(a, b, n, f, X):
     # Definindo as raizes e Ci padrões do intervalo [-1, 1]
     raizes_padroes = [np.array([-np.sqrt(3)/3, np.sqrt(3)/3]),
@@ -27,9 +29,9 @@ def quadr_gauss(a, b, n, f, X):
     print('\nIntegral aproximada para n =', n, 'no intervalo [', a, ',', b, '] =', aprox.round(6), '\n')
 
 X = sp.Symbol('x')
-n = 2
+n = 4
 a = -3
 b = 2
-f = sp.exp(-X)*sp.cos(X)
+f = sp.exp(-X)*sp.cos(sp.rad(X))
 
 quadr_gauss(a, b, n, f, X)
