@@ -1,4 +1,3 @@
-import numpy as np
 import sympy as sp
 
 ### Altere o valor n, o intervalo [a,b] e a função f(x) que deseja integrar por aproximação
