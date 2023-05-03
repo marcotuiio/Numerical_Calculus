@@ -16,16 +16,21 @@ def trapezio(f, a, b, n, X):
     return integral_aprox.round(9)
 
 def simpson(f, a, b, n, X):
-    integral_aprox = 0
     h = (b - a) / n
-    ini = a
-    fin = h
-    for i in range(n):
-        integral_aprox = integral_aprox + (f.subs(X, ini) + 4*f.subs(X, (ini+fin)/2) + f.subs(X, fin))
-        ini = fin
-        fin = ini + h
+    xi = np.zeros(n+1)
+    for i in range(n+1):
+        xi[i] = a + i*h
+
+    integral_aprox = f.subs(X, xi[0]) + f.subs(X, xi[n])
+    mult = 4
+    for i in range(1, n):
+        integral_aprox = mult * f.subs(X, xi[i]) + integral_aprox
+        if mult == 4:
+            mult = 2
+        else:
+            mult = 4
+
     integral_aprox = h/3 * integral_aprox
-    # print('Simpson: ', integral_aprox.round(9))
     return integral_aprox.round(9)
 
 def simpson38(f, a, b, n, X):
@@ -33,10 +38,10 @@ def simpson38(f, a, b, n, X):
     h = (b - a) / n
     ini = a
     fin = h
-    if n <= 2: # não é possível usar esse método com 2 ou menos intervalos
-        return 99999
+    # if n % 3 != 0: # Se não for divisível por 3, não é possível aplicar o método
+    #     return 9999999
 
-    for i in range(n):
+    for i in range(n//3):
         integral_aprox = integral_aprox + (f.subs(X, ini) + 3*f.subs(X, (2*ini+fin)/3) + 3*f.subs(X, (ini+2*fin)/3) + f.subs(X, fin)) 
         ini = fin
         fin = ini + h
@@ -121,7 +126,7 @@ intervalo6 = np.array([1, 0])
 Funcoes .append(f6)
 Intervalos.append(intervalo6)
 
-valores_exatos = np.array([1.429255, 1.652674, 1.664454, 0.018272, 0.405465, 1.2091996])
+valores_exatos = np.array([1.429254665, 1.65267369, 1.664454348, 0.01827155946, 0.4054651084, 1.209199577])
 
 output = open("atividadeIntegracao_MarcoBarros.txt", "w")
 for i in range(len(Funcoes)):
