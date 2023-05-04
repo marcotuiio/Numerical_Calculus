@@ -40,10 +40,10 @@ def simpson38(f, a, b, n, X):
     fin = h
 
     for i in range(n):
-        h_aux = (fin - ini) / 3
         integral_aprox = integral_aprox + (f.subs(X, ini) + 3*f.subs(X, (2*ini+fin)/3) + 3*f.subs(X, (ini+2*fin)/3) + f.subs(X, fin)) 
         ini = fin
         fin = ini + h
+    h_aux = (fin - ini) / 3
     integral_aprox = 3*h_aux/8 * integral_aprox
     # print('Simpson 3/8: ', integral_aprox.round(9))
     return integral_aprox.round(9)
