@@ -38,14 +38,13 @@ def simpson38(f, a, b, n, X):
     h = (b - a) / n
     ini = a
     fin = h
-    # if n % 3 != 0: # Se não for divisível por 3, não é possível aplicar o método
-    #     return 9999999
 
-    for i in range(n//3):
+    for i in range(n):
+        h_aux = (fin - ini) / 3
         integral_aprox = integral_aprox + (f.subs(X, ini) + 3*f.subs(X, (2*ini+fin)/3) + 3*f.subs(X, (ini+2*fin)/3) + f.subs(X, fin)) 
         ini = fin
         fin = ini + h
-    integral_aprox = 3*h/8 * integral_aprox
+    integral_aprox = 3*h_aux/8 * integral_aprox
     # print('Simpson 3/8: ', integral_aprox.round(9))
     return integral_aprox.round(9)
 
