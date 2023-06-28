@@ -3,6 +3,7 @@ import sympy as sp
 def runge_kutta(ordem, f, x_values, y_values, final_x, h=0.1):
     
     match ordem:
+        
         case 2:
             print('-> Método de Runge-Kutta de ordem 2 (Euler Corrigido)')
             n = 0
