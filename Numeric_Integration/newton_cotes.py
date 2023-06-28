@@ -26,9 +26,18 @@ def newton_cotes(f, a, b, n):
     print('---> ', (integral_aprox.evalf()).round(6))
 
 X = sp.Symbol('x')
-n = 3
-a = 0
-b = sp.pi / 4
-f = sp.sin(X)
+# n = 3
+# a = 0
+# b = sp.pi / 4
+# f = sp.sin(X)
 
+# f = sp.sqrt((X**2 - 4))
+# n = 3
+# a = 2
+# b = 3
+
+f = 1 / (1 + X)
+n = 3
+a = 1
+b = 2
 newton_cotes(f, a, b, n)
